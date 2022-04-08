@@ -112,3 +112,10 @@ justify-content: center;
     background:#a136ff25;
     border-radius: 5px;
 }
+
+.close {
+    position: relative;
+    text-align: end;
+    top: 30px;
+    right: 10px;
+}
