@@ -6,4 +6,109 @@ html, body {
     height: 100vh;
     padding: 0;
     margin: 0;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.wrapper {
+    display: grid;
+    grid-template: 1fr 4fr / 1fr;
+    height: 100vh;
+}
+
+.header {
+display: flex;
+align-items: center;
+justify-content: center;
+}
+
+.header-logo {
+    height: 7em;
+}
+
+.header-text {
+    font-size: 5em;
+}
+
+.main {
+    display: grid;
+    grid-template: 1fr 1fr 5fr / 1fr;
+}
+
+.controls {
+    display: grid;
+    grid-template: 1fr /5fr 1fr 1fr 5fr;
+    margin-bottom: 0px;
+    align-items: center;
+}
+
+.controls > button {
+    height: 3rem;
+    width: 7rem;
+    background-color: #8fc1ff;
+    border-radius: 15px;
+    border: none;
+    font-size: 0.9rem;
+    margin-right: 10px;
+}
+
+.controls > button:hover {
+    cursor: pointer;
+    background-color: #a236ff;
+    color: #fff;
+}
+
+.controls > button:active {
+    background-color: #2b6aff;
+    color: #fff;
+}
+
+.information{
+    background-color: #2b6aff;
+    height: fit-content;
+    padding: 15px;
+}
+
+.description {
+    font-size: 1.1em;
+    width: 50%;
+    margin-left: auto;
+    margin-right: auto;
+    color: #fff;
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 75%));
+    grid-template-rows: repeat(auto-fit, minmax(150px, 75%));
+}
+
+.popup-wrapper {
+    position: relative;
+    text-align: center;
+    width: 100%;
+}
+
+.popup {
+    display: none;
+    position: fixed;
+    left: 50%;
+    top: 35%;
+    transform: translate(-50%, 5%);
+}
+
+.form-container {
+    max-width: 300px;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 5px;
+    border: solid 2px #a236ff;
+}
+
+.form-container input[type='text'],
+.form-container input[type='tel'] {
+    width: 100%;
+    padding: 10px;
+    border: none;
+    background:#a136ff25;
+    border-radius: 5px;
 }

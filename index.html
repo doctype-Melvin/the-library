@@ -9,7 +9,41 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    
+    <div class="wrapper">
+        <div class="header">
+            <img class="header-logo" src="https://img.icons8.com/nolan/344/books-1.png" alt="library">
+            <span class="header-text">Librify</span>
+        </div>
+        <div class="main">
+            <div class="controls">
+                <div></div>
+                <button type="button" class="add">Add Book</button>
+                <button type="button" class="deleteAll">Delete All</button>
+            </div>
+            <div class="information">
+                <div class="description">You can add books to your library, mark them whether you've 
+                    read them or not and even delete single books or the whole library.</div>
+            </div>
+            <div class="display">
+                <div class="grid">
+
+                </div>
+            </div>
+        </div>
+        <div class="popup-wrapper">
+            <div class="popup" id="popup">
+                <form action="#" class="form-container">
+                    <label for="title"><strong>Book Title</strong></label>
+                    <input type="text" id="title">
+                    <label for="author"><strong>Author</strong></label>
+                    <input type="text" id="author">
+                    <label for="pages"><strong>Page count</strong></label>
+                    <input type="tel" name="pages" id="pages">
+                    <button type="button" id="pop-add">Add Book</button>
+                </form>
+            </div>
+        </div>
+    </div>
 <script src="script.js"></script>
 </body>
 </html>
