@@ -1,9 +1,12 @@
 let grid = document.querySelector('.grid');
+
+//Buttons
 let addBook = document.querySelector('.add');
 let deleteAll = document.querySelector('.deleteAll');
 let popAdd = document.getElementById('pop-add')
 let closeBtn = document.querySelector('.closeBtn');
 
+//Form fields
 let title = document.getElementById('title');
 let author = document.getElementById('author');
 let pages = document.getElementById('pages');
@@ -16,7 +19,14 @@ function Book(title, author, pages){
 }
 
 //Storage for book input
-let library = [];
+let library = [
+    {
+        title: 'Chaotic events with lots of text',
+        author: 'Reginald Jones',
+        pages: '423'
+    }
+];
+addCard()
 
 //Add book button triggers popup window
 addBook.addEventListener('click', openPopUp);
@@ -40,6 +50,7 @@ function addToLibrary() {
     let userBook = new Book(title.value, author.value, pages.value);
     library.push(userBook);
     clearForm();
+    addCard();
     return library
 }
 
@@ -48,4 +59,34 @@ function clearForm(){
     title.value = '';
     author.value = '';
     pages.value = '';
+}
+
+//Adds new card to display area
+function addCard(){
+    let card = document.createElement('div');
+    card.classList.add('card');
+    let title = document.createElement('div');
+    title.classList.add('cardTitle');
+    let author = document.createElement('div');
+    author.classList.add('cardAuthor');
+    let pages = document.createElement('div');
+    pages.classList.add('cardPages');
+        //Adds toggle switch for reading status
+        let toggle = document.createElement('label');
+        toggle.classList.add('switch');
+        let slider = document.createElement('span');
+        slider.classList.add('slider');
+        let status = document.createElement('input');
+        status.setAttribute('type', 'checkbox')
+        status.classList.add('checkbox');
+        toggle.append(status, slider);
+            
+            for (let i = 0; i < library.length; i++){
+                title.textContent = library[i].title;
+                author.textContent = library[i].author;
+                pages.textContent = library[i].pages + ` pages`;
+            }
+    card.append(title, author, pages, toggle)
+    grid.append(card);
+    return card
 }
