@@ -18,7 +18,7 @@ function Book(title, author, pages){
 //Storage for book input
 let library = [];
 
-//Link popup to addBook button
+//Add book button triggers popup window
 addBook.addEventListener('click', openPopUp);
 popAdd.addEventListener('click', () => {
     addToLibrary()
@@ -35,9 +35,17 @@ function closePopUp() {
     document.getElementById('popup').style.display = 'none';
 }
 
+//Creates new book instance and pushes to library
 function addToLibrary() {
     let userBook = new Book(title.value, author.value, pages.value);
     library.push(userBook);
-    console.log('This should push new book instance to library', 'Remove inputs in form')
+    clearForm();
     return library
+}
+
+//Clears the form after book addition
+function clearForm(){
+    title.value = '';
+    author.value = '';
+    pages.value = '';
 }
