@@ -12,10 +12,11 @@ let author = document.getElementById('author');
 let pages = document.getElementById('pages');
 
 //Book prototype
-function Book(title, author, pages){
+function Book(title, author, pages, index){
     this.title = title,
     this.author = author,
-    this.pages = pages
+    this.pages = pages,
+    this.index = index
 }
 
 //Storage for book input
@@ -61,6 +62,15 @@ function clearForm(){
     pages.value = '';
 }
 
+
+function removeBook(){
+    library.slice(0)
+}
+
+function markRead(e){
+    console.log(e.target)
+}
+
 //Adds new card to display area
 function addCard(){
     let card = document.createElement('div');
@@ -71,22 +81,29 @@ function addCard(){
     author.classList.add('cardAuthor');
     let pages = document.createElement('div');
     pages.classList.add('cardPages');
-        //Adds toggle switch for reading status
-        let toggle = document.createElement('label');
-        toggle.classList.add('switch');
-        let slider = document.createElement('span');
-        slider.classList.add('slider');
-        let status = document.createElement('input');
-        status.setAttribute('type', 'checkbox')
-        status.classList.add('checkbox');
-        toggle.append(status, slider);
-            
+    let index = document.createElement('div');
+    index.classList.add('index');
+    index.setAttribute('data-index', 0)
+        
+            let rmBtn = document.createElement('button');
+            rmBtn.classList.add('rmBtn');
+            rmBtn.textContent = 'Remove Book';
+            rmBtn.addEventListener('click', removeBook)
+                let read = document.createElement('button');
+                read.classList.add('read');
+                read.textContent = 'Mark as read';
+                read.addEventListener('click', markRead)
+                    let buttons = document.createElement('div');
+                    buttons.classList.add('buttonContainer');
+                    buttons.append(rmBtn, read);
+                   
             for (let i = 0; i < library.length; i++){
                 title.textContent = library[i].title;
                 author.textContent = library[i].author;
                 pages.textContent = library[i].pages + ` pages`;
+                index.dataIndex = i;
             }
-    card.append(title, author, pages, toggle)
+    card.append(title, author, pages, buttons)
     grid.append(card);
-    return card
+    return index.dataIndex;
 }

@@ -84,75 +84,57 @@ justify-content: center;
     gap: 20px;
     padding: 20px;
 }
+
+/*Card start*/
 .card {
     background-color: #a236ff;
     color: #fff;
-    border-radius: 5px;
-    padding: 10px;
-    overflow: scroll;
+    border-radius: 15px;
+    padding: 15px;
+    overflow: auto;
+
 }
 .cardTitle{
     font-weight: 600;
     font-size: 1.35em;
     margin-bottom: 10px;
-    text-align: justify;
+    text-align: center;
 }
 .cardAuthor{
     font-style: italic;
     font-weight: 500;
     font-size: 1.25em;
     text-align: center;
-    margin-bottom: 5px;
+    margin-bottom: 15px;
 }
 .cardPages{
     text-align: end;
     margin-bottom: 15px;
 }
-/*Toggle switch start*/
-.switch{
-    position: relative;
-    display: inline-block;
-    width: 40px;
-    height: 10px;
-}
-.switch input {
-    opacity: 0;
-    width: 0;
-    height: 0;
-}
-.slider{
-    position: absolute;
+.rmBtn, .read {
+    border: 1px solid white;
+    background-color: #a236ff;
+    color: #fff;
+    border-radius: 15px;
+    padding: 5px;
     cursor: pointer;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background-color: #fff;
-    transition: .4s;
+    font-weight: 600;
 }
-.slider:before{
-    position: absolute;
-    content: '';
-    height: 20px;
-    width: 20px;
-    left: 0px;
-    top: 0px;
-    bottom: 0px;
-    background-color: #3182dd;
-    transition: .4s;
+.buttonContainer{
+    display: flex;
+    justify-content: space-evenly;
 }
-input:checked + .slider {
-    background-color: #ffffff;
+.rmBtn:hover {
+    background-color: #ff22b9;
 }
-input:focus + .slider {
-    box-shadow: 0 0 1px #9cc59173;
+.read:hover{
+    background-color: #36ff8d;
+    color: #a236ff;
 }
-input:checked + .slider:before {
-    transform: translateX(20px);
-}
-.checkbox{
-    background-color: #8fc1ff;
-}
+/*Card end*/
+
+/*Toggle switch start*/
+
 /*Toggle switch end*/
 /*Display end*/
 
