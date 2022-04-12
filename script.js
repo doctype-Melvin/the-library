@@ -19,43 +19,39 @@ function Book(title, author, pages){
     this.pages = pages
 }
 
-//Storage for book input
-let library = [
-    {
-        title: 'Chaotic events with lots of text',
-        author: 'Reginald Jones',
-        pages: '423'
-    },
-    {
-        title: 'The price of life',
-        author: 'Petros Galafinakis',
-        pages: '389'
-    }
-];
-
-//Add book button triggers popup window
-addBook.addEventListener('click', openPopUp);
-popAdd.addEventListener('click', () => {
-    addToLibrary()  
-    closePopUp();
-});
-
-closeBtn.addEventListener('click', closePopUp);
-
-function openPopUp() {
-    document.getElementById('popup').style.display = 'block';
-}
-
-function closePopUp() {
-    document.getElementById('popup').style.display = 'none';
-}
-
 //Creates new book instance and pushes to library
 function addToLibrary() {
     let userBook = new Book(title.value, author.value, pages.value);
     library.push(userBook);
     clearForm();
     return library
+}
+
+//Storage for book input
+let library = [
+    {
+        title: 'Chaotic events with lots of witnesses',
+        author: 'Reginald Jones',
+        pages: '239'
+    }
+];
+
+//Add book button triggers popup window
+addBook.addEventListener('click', openPopUp);
+//Form inputs processing + closing popup window
+popAdd.addEventListener('click', () => {
+    addToLibrary();
+    closePopUp();
+});
+closeBtn.addEventListener('click', closePopUp);
+
+//Display functions of popup window
+function openPopUp() {
+    document.getElementById('popup').style.display = 'block';
+}
+
+function closePopUp() {
+    document.getElementById('popup').style.display = 'none';
 }
 
 //Clears form after book addition
@@ -66,35 +62,10 @@ function clearForm(){
 }
 
 function removeBook(e){
-    console.log(e)
+    //Removes single book from library
 }
 
 function markRead(e){
-    console.log(e.target)
+    //Marks a book as read and changes card color
 }
 
-if (library != []) {
-    for (let i = 0; i < library.length; i++){
-        bookDetails(library[i].title, library[i].author, library[i].pages, i)
-}
-};
-
-function bookDetails(title, author, pages, index){
-    let card = document.createElement('div');
-    card.classList.add('card');
-
-    let cardTitle = document.createElement('div');
-    cardTitle.classList.add('cardTitle');
-    cardTitle.textContent = title;
-        let cardAuthor = document.createElement('div');
-        cardAuthor.classList.add('cardAuthor');
-        cardAuthor.textContent = author;
-            let cardPages = document.createElement('div');
-            cardPages.classList.add('cardPages');
-            cardPages.textContent = pages;
-                let cardIndex = document.createElement('div');
-                cardIndex.setAttribute('data-index', index)
-    card.append(cardTitle, cardAuthor, cardPages);
-    grid.append(card);
-    console.log(cardIndex.dataset.index)
-}
