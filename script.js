@@ -63,7 +63,7 @@ let library = [
 addBook.addEventListener('click', openPopUp);
 popAdd.addEventListener('click', () => {
     addToLibrary()
-    addBookDetails();
+  
     closePopUp();
     
 });
@@ -85,7 +85,7 @@ function addToLibrary() {
     return library
 }
 
-//Clears the form after book addition
+//Clears form after book addition
 function clearForm(){
     title.value = '';
     author.value = '';
@@ -101,23 +101,3 @@ function markRead(e){
     console.log(e.target)
 }
 
-function createCard(){
-    let card = document.createElement('div');
-    card.classList.add('card');
-    card.append(cTitle, cAuthor, cPages, buttons);
-    grid.append(card);
-}
-
-
-function addBookDetails(){
-    for (let i = 0; i < library.length; i++){
-        cTitle.textContent = library[i].title;
-        cAuthor.textContent = library[i].author;
-        cPages.textContent = library[i].pages + ` pages`;
-        index.dataIndex = i;
-        rmBtn.dataIndex = i;
-        read.dataIndex = i;
-    }
-createCard()
-}
-addBookDetails();
