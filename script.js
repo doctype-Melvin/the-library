@@ -11,12 +11,38 @@ let title = document.getElementById('title');
 let author = document.getElementById('author');
 let pages = document.getElementById('pages');
 
+//Card display variables
+let card = document.createElement('div');
+card.classList.add('card');
+    let cTitle = document.createElement('div');
+    cTitle.classList.add('cardTitle');
+        let cAuthor = document.createElement('div');
+        cAuthor.classList.add('cardAuthor');
+            let cPages = document.createElement('div');
+            cPages.classList.add('cardPages');
+                let index = document.createElement('div');
+                index.classList.add('index');
+                index.setAttribute('data-index', 0);
+//Card buttons
+let rmBtn = document.createElement('button');
+rmBtn.classList.add('rmBtn');
+rmBtn.setAttribute('data-Index', 0);
+rmBtn.textContent = 'Remove Book';
+rmBtn.addEventListener('click', removeBook)
+    let read = document.createElement('button');
+    read.classList.add('read');
+    read.setAttribute('data-index', 0);
+    read.textContent = 'Mark as read';
+    read.addEventListener('click', markRead)
+        let buttons = document.createElement('div');
+        buttons.classList.add('buttonContainer');
+        buttons.append(rmBtn, read);
+
 //Book prototype
-function Book(title, author, pages, index){
+function Book(title, author, pages){
     this.title = title,
     this.author = author,
-    this.pages = pages,
-    this.index = index
+    this.pages = pages
 }
 
 //Storage for book input
@@ -25,14 +51,19 @@ let library = [
         title: 'Chaotic events with lots of text',
         author: 'Reginald Jones',
         pages: '423'
+    },
+    {
+        title: 'The price of life',
+        author: 'Petros Galafinakis',
+        pages: '389'
     }
 ];
-addCard()
 
 //Add book button triggers popup window
 addBook.addEventListener('click', openPopUp);
 popAdd.addEventListener('click', () => {
     addToLibrary()
+    addBookDetails();
     closePopUp();
     
 });
@@ -51,7 +82,6 @@ function addToLibrary() {
     let userBook = new Book(title.value, author.value, pages.value);
     library.push(userBook);
     clearForm();
-    addCard();
     return library
 }
 
@@ -63,47 +93,31 @@ function clearForm(){
 }
 
 
-function removeBook(){
-    library.slice(0)
+function removeBook(e){
+    console.log(e)
 }
 
 function markRead(e){
     console.log(e.target)
 }
 
-//Adds new card to display area
-function addCard(){
+function createCard(){
     let card = document.createElement('div');
     card.classList.add('card');
-    let title = document.createElement('div');
-    title.classList.add('cardTitle');
-    let author = document.createElement('div');
-    author.classList.add('cardAuthor');
-    let pages = document.createElement('div');
-    pages.classList.add('cardPages');
-    let index = document.createElement('div');
-    index.classList.add('index');
-    index.setAttribute('data-index', 0)
-        
-            let rmBtn = document.createElement('button');
-            rmBtn.classList.add('rmBtn');
-            rmBtn.textContent = 'Remove Book';
-            rmBtn.addEventListener('click', removeBook)
-                let read = document.createElement('button');
-                read.classList.add('read');
-                read.textContent = 'Mark as read';
-                read.addEventListener('click', markRead)
-                    let buttons = document.createElement('div');
-                    buttons.classList.add('buttonContainer');
-                    buttons.append(rmBtn, read);
-                   
-            for (let i = 0; i < library.length; i++){
-                title.textContent = library[i].title;
-                author.textContent = library[i].author;
-                pages.textContent = library[i].pages + ` pages`;
-                index.dataIndex = i;
-            }
-    card.append(title, author, pages, buttons)
+    card.append(cTitle, cAuthor, cPages, buttons);
     grid.append(card);
-    return index.dataIndex;
 }
+
+
+function addBookDetails(){
+    for (let i = 0; i < library.length; i++){
+        cTitle.textContent = library[i].title;
+        cAuthor.textContent = library[i].author;
+        cPages.textContent = library[i].pages + ` pages`;
+        index.dataIndex = i;
+        rmBtn.dataIndex = i;
+        read.dataIndex = i;
+    }
+createCard()
+}
+addBookDetails();
