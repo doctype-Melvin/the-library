@@ -11,32 +11,6 @@ let title = document.getElementById('title');
 let author = document.getElementById('author');
 let pages = document.getElementById('pages');
 
-//Card display variables
-let card = document.createElement('div');
-card.classList.add('card');
-    let cTitle = document.createElement('div');
-    cTitle.classList.add('cardTitle');
-        let cAuthor = document.createElement('div');
-        cAuthor.classList.add('cardAuthor');
-            let cPages = document.createElement('div');
-            cPages.classList.add('cardPages');
-                let index = document.createElement('div');
-                index.classList.add('index');
-                index.setAttribute('data-index', 0);
-//Card buttons
-let rmBtn = document.createElement('button');
-rmBtn.classList.add('rmBtn');
-rmBtn.setAttribute('data-Index', 0);
-rmBtn.textContent = 'Remove Book';
-rmBtn.addEventListener('click', removeBook)
-    let read = document.createElement('button');
-    read.classList.add('read');
-    read.setAttribute('data-index', 0);
-    read.textContent = 'Mark as read';
-    read.addEventListener('click', markRead)
-        let buttons = document.createElement('div');
-        buttons.classList.add('buttonContainer');
-        buttons.append(rmBtn, read);
 
 //Book prototype
 function Book(title, author, pages){
@@ -62,11 +36,10 @@ let library = [
 //Add book button triggers popup window
 addBook.addEventListener('click', openPopUp);
 popAdd.addEventListener('click', () => {
-    addToLibrary()
-  
+    addToLibrary()  
     closePopUp();
-    
 });
+
 closeBtn.addEventListener('click', closePopUp);
 
 function openPopUp() {
@@ -92,7 +65,6 @@ function clearForm(){
     pages.value = '';
 }
 
-
 function removeBook(e){
     console.log(e)
 }
@@ -101,3 +73,28 @@ function markRead(e){
     console.log(e.target)
 }
 
+if (library != []) {
+    for (let i = 0; i < library.length; i++){
+        bookDetails(library[i].title, library[i].author, library[i].pages, i)
+}
+};
+
+function bookDetails(title, author, pages, index){
+    let card = document.createElement('div');
+    card.classList.add('card');
+
+    let cardTitle = document.createElement('div');
+    cardTitle.classList.add('cardTitle');
+    cardTitle.textContent = title;
+        let cardAuthor = document.createElement('div');
+        cardAuthor.classList.add('cardAuthor');
+        cardAuthor.textContent = author;
+            let cardPages = document.createElement('div');
+            cardPages.classList.add('cardPages');
+            cardPages.textContent = pages;
+                let cardIndex = document.createElement('div');
+                cardIndex.setAttribute('data-index', index)
+    card.append(cardTitle, cardAuthor, cardPages);
+    grid.append(card);
+    console.log(cardIndex.dataset.index)
+}
