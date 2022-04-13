@@ -40,7 +40,7 @@ addBook.addEventListener('click', openPopUp);
 popAdd.addEventListener('click', () => {
     addToLibrary();
     closePopUp();
-   
+    createCard();
 });
 closeBtn.addEventListener('click', closePopUp);
 
@@ -101,3 +101,10 @@ const cardFactory = (title, author, pages, index) => {
         grid.append(card);
 }
 
+function createCard(){
+    for (let i = 0; i < library.length; i++) {
+        cardFactory(library[i].title, library[i].author, library[i].pages, i)
+    }
+};
+
+createCard()
