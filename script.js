@@ -19,14 +19,6 @@ function Book(title, author, pages){
     this.pages = pages
 }
 
-//Creates new book instance and pushes to library
-function addToLibrary() {
-    let userBook = new Book(title.value, author.value, pages.value);
-    library.push(userBook);
-    clearForm();
-    return library
-}
-
 //Storage for book input
 let library = [
     {
@@ -35,6 +27,14 @@ let library = [
         pages: '239'
     }
 ];
+newCard()
+//Creates new book instance and pushes to library
+function addToLibrary() {
+    let userBook = new Book(title.value, author.value, pages.value);
+    library.push(userBook);
+    clearForm();
+    newCard();
+}
 
 //Add book button triggers popup window
 addBook.addEventListener('click', openPopUp);
@@ -42,6 +42,7 @@ addBook.addEventListener('click', openPopUp);
 popAdd.addEventListener('click', () => {
     addToLibrary();
     closePopUp();
+   
 });
 closeBtn.addEventListener('click', closePopUp);
 
@@ -61,6 +62,38 @@ function clearForm(){
     pages.value = '';
 }
 
+//Card variable
+function newCard(){
+    let card = document.createElement('div');
+    card.classList.add('card');
+    card.setAttribute('data-index', 0)
+    let title = document.createElement('div');
+    title.classList.add('cardTitle');
+    let author = document.createElement('div');
+    author.classList.add('cardAuthor');
+    let pages = document.createElement('div');
+    pages.classList.add('cardPages');
+
+        let rmBtn = document.createElement('button');
+        rmBtn.classList.add('rmBtn');
+        rmBtn.textContent = `Remove Book`
+        let read = document.createElement('button');
+        read.classList.add('read');
+        read.textContent = `Mark as read`
+        let buttonContainer = document.createElement('div');
+        buttonContainer.classList.add('buttonContainer');
+        buttonContainer.append(rmBtn, read);
+
+    for (let i = 0; i < library.length; i++) {
+        title.textContent = library[i].title;
+        author.textContent = library[i].author;
+        pages.textContent = library[i].pages + ` pages`;
+        card.dataIndex = i;
+    }
+    card.append(title, author, pages, buttonContainer);
+    grid.append(card);
+}
+
 function removeBook(e){
     //Removes single book from library
 }
@@ -68,4 +101,3 @@ function removeBook(e){
 function markRead(e){
     //Marks a book as read and changes card color
 }
-
