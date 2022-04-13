@@ -27,13 +27,11 @@ let library = [
         pages: '239'
     }
 ];
-newCard()
 //Creates new book instance and pushes to library
 function addToLibrary() {
     let userBook = new Book(title.value, author.value, pages.value);
     library.push(userBook);
     clearForm();
-    newCard();
 }
 
 //Add book button triggers popup window
@@ -62,42 +60,41 @@ function clearForm(){
     pages.value = '';
 }
 
-//Card variable
-function newCard(){
+//Making the cards
+
+const cardFactory = (title, author, pages, index) => {
     let card = document.createElement('div');
     card.classList.add('card');
-    card.dataset.index = 0;
-    let title = document.createElement('div');
-    title.classList.add('cardTitle');
-    let author = document.createElement('div');
-    author.classList.add('cardAuthor');
-    let pages = document.createElement('div');
-    pages.classList.add('cardPages');
-
-        let rmBtn = document.createElement('button');
-        rmBtn.classList.add('rmBtn');
-        rmBtn.textContent = `Remove Book`
+    let cardTitle = document.createElement('div');
+    cardTitle.classList.add('cardTitle');
+    let cardAuthor = document.createElement('div');
+    cardAuthor.classList.add('cardAuthor');
+    let cardPages = document.createElement('div');
+    cardPages.classList.add('cardPages');
+    
+        let remove = document.createElement('button');
+        remove.classList.add('rmBtn');
+        remove.textContent = 'Remove Book';
         let read = document.createElement('button');
         read.classList.add('read');
-        read.textContent = `Mark as read`
+        read.textContent = 'Mark as read';
         let buttonContainer = document.createElement('div');
-        buttonContainer.classList.add('buttonContainer');
-        buttonContainer.append(rmBtn, read);
+        buttonContainer.classList.add('buttonContainer')
+        buttonContainer.append(remove, read);
 
-    for (let i = 0; i < library.length; i++) {
-        title.textContent = library[i].title;
-        author.textContent = library[i].author;
-        pages.textContent = library[i].pages + ` pages`;
-        card.dataset.index = i;
-    }
-    card.append(title, author, pages, buttonContainer);
-    grid.append(card);
+            read.addEventListener('click', () => {
+                card.classList.toggle('card');
+                card.classList.toggle('cardRead');
+                if (card.className == 'cardRead') {
+                    read.textContent = `Mark as unread`
+                } else read.textContent = `Mark as read`
+            })
+
+        cardTitle.textContent = title;
+        cardAuthor.textContent = author;
+        cardPages.textContent = pages + ` pages`;
+        card.dataset.index = index;
+        card.append(cardTitle, cardAuthor, cardPages, buttonContainer);
+        grid.append(card);
 }
 
-function removeBook(e){
-    //Removes single book from library
-}
-
-function markRead(e){
-    //Marks a book as read and changes card color
-}
