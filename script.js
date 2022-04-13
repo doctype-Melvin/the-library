@@ -21,11 +21,11 @@ function Book(title, author, pages){
 
 //Storage for book input
 let library = [
-    {
-        title: 'Chaotic events with lots of witnesses',
-        author: 'Reginald Jones',
-        pages: '239'
-    }
+    // {
+    //     title: 'Chaotic events with lots of witnesses',
+    //     author: 'Reginald Jones',
+    //     pages: '239'
+    // }
 ];
 //Creates new book instance and pushes to library
 function addToLibrary() {
@@ -107,4 +107,3 @@ function createCard(){
     }
 };
 
-createCard()
