@@ -61,7 +61,6 @@ function clearForm(){
 }
 
 //Making the cards
-
 const cardFactory = (title, author, pages, index) => {
     let card = document.createElement('div');
     card.classList.add('card');
@@ -88,6 +87,10 @@ const cardFactory = (title, author, pages, index) => {
                 if (card.className == 'cardRead') {
                     read.textContent = `Mark as unread`
                 } else read.textContent = `Mark as read`
+            });
+
+            remove.addEventListener('click', () => {
+                console.log('Remove this card')
             })
 
         cardTitle.textContent = title;
