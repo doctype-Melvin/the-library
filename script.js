@@ -66,7 +66,7 @@ function clearForm(){
 function newCard(){
     let card = document.createElement('div');
     card.classList.add('card');
-    card.setAttribute('data-index', 0)
+    card.dataset.index = 0;
     let title = document.createElement('div');
     title.classList.add('cardTitle');
     let author = document.createElement('div');
@@ -88,7 +88,7 @@ function newCard(){
         title.textContent = library[i].title;
         author.textContent = library[i].author;
         pages.textContent = library[i].pages + ` pages`;
-        card.dataIndex = i;
+        card.dataset.index = i;
     }
     card.append(title, author, pages, buttonContainer);
     grid.append(card);
