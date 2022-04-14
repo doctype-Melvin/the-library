@@ -20,13 +20,7 @@ function Book(title, author, pages){
 }
 
 //Storage for book input
-let library = [
-    // {
-    //     title: 'Chaotic events with lots of witnesses',
-    //     author: 'Reginald Jones',
-    //     pages: '239'
-    // }
-];
+let library = [];
 //Creates new book instance and pushes to library
 function addToLibrary() {
     let userBook = new Book(title.value, author.value, pages.value);
@@ -102,8 +96,10 @@ const cardFactory = (title, author, pages, index) => {
 }
 
 function createCard(){
-    for (let i = 0; i < library.length; i++) {
-        cardFactory(library[i].title, library[i].author, library[i].pages, i)
+    for (let i = library.length-1; i < library.length; i++){
+        cardFactory(library[library.length-1].title, 
+                    library[library.length-1].author,
+                    library[library.length-1].pages,
+                    library.length-1)
     }
 };
-
