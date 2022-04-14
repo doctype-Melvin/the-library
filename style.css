@@ -88,10 +88,11 @@ justify-content: center;
 /*Display start*/
 .grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(150px, 300px));
+    grid-template-columns: repeat(auto-fit, minmax(235px, 17%));
     grid-template-rows: repeat(auto-fit, minmax(150px, 200px));
     gap: 20px;
     padding: 20px;
+    justify-content: center;
 }
 
 /*Card start*/
