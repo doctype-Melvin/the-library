@@ -20,7 +20,33 @@ function Book(title, author, pages){
 }
 
 //Storage for book input
-let library = [];
+let library = [
+    {
+    title: `I think so`,
+    author: `Kelis Thompson`,
+    pages: '343'
+},
+{
+    title: `Never knew I could`,
+    author: `Sasha Jackobs`,
+    pages: '298'
+},
+{
+    title: `The Self`,
+    author: `Michael Priotkowsky`,
+    pages: '276'
+},
+{
+    title: `Ocelots and Zealots`,
+    author: `Jane K. Tiberius`,
+    pages: '277'
+},
+{
+    title: `Don't grow up`,
+    author: `Kenan Abdul`,
+    pages: '311'
+}
+];
 //Creates new book instance and pushes to library
 function addToLibrary() {
     let userBook = new Book(title.value, author.value, pages.value);
@@ -54,6 +80,10 @@ function clearForm(){
     pages.value = '';
 }
 
+deleteAll.addEventListener('click', () => {
+    removeAll()
+});
+
 //Making the cards
 const cardFactory = (title, author, pages, index) => {
     let card = document.createElement('div');
@@ -67,6 +97,7 @@ const cardFactory = (title, author, pages, index) => {
     
         let remove = document.createElement('button');
         remove.classList.add('rmBtn');
+        remove.dataset.index = index;
         remove.textContent = 'Remove Book';
         let read = document.createElement('button');
         read.classList.add('read');
@@ -83,9 +114,7 @@ const cardFactory = (title, author, pages, index) => {
                 } else read.textContent = `Mark as read`
             });
 
-            remove.addEventListener('click', () => {
-                console.log('Remove this card')
-            })
+            remove.addEventListener('click', removeCard)
 
         cardTitle.textContent = title;
         cardAuthor.textContent = author;
@@ -103,3 +132,36 @@ function createCard(){
                     library.length-1)
     }
 };
+
+function libraryStack(input){
+    if (input != []) {
+        for (let i = 0; i < input.length; i++){
+            cardFactory(input[i].title,
+                input[i].author,
+                input[i].pages,
+                i)
+        }
+    } 
+}
+libraryStack(library)
+
+function removeCard(e){
+    let cardIndex = e.target.dataset.index
+    let newLibrary = (library.filter(book => library.indexOf(book) != parseInt(cardIndex)));
+    resetDisplay();
+    library = newLibrary
+    libraryStack(newLibrary);
+}
+
+function removeAll(){
+    while (grid.firstChild) {
+        grid.removeChild(grid.lastChild)
+    }
+    library = [];
+}
+
+function resetDisplay(){
+    while (grid.firstChild) {
+        grid.removeChild(grid.lastChild)
+    }
+}
