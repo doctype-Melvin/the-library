@@ -13,39 +13,45 @@ let pages = document.getElementById('pages');
 
 
 //Book prototype
-function Book(title, author, pages){
+function Book(title, author, pages, status){
     this.title = title,
     this.author = author,
-    this.pages = pages
+    this.pages = pages,
+    this.status = status
 }
 
 //Storage for book input
 let library = [
-//     {
-//     title: `I think so`,
-//     author: `Kelis Thompson`,
-//     pages: '343'
-// },
-// {
-//     title: `Never knew I could`,
-//     author: `Sasha Jackobs`,
-//     pages: '298'
-// },
-// {
-//     title: `The Self`,
-//     author: `Michael Priotkowsky`,
-//     pages: '276'
-// },
-// {
-//     title: `Ocelots and Zealots`,
-//     author: `Jane K. Tiberius`,
-//     pages: '277'
-// },
-// {
-//     title: `Don't grow up`,
-//     author: `Kenan Abdul`,
-//     pages: '311'
-// }
+    {
+    title: `I think so`,
+    author: `Kelis Thompson`,
+    pages: '343',
+    status: false
+},
+{
+    title: `Never knew I could`,
+    author: `Sasha Jackobs`,
+    pages: '298',
+    status: false
+},
+{
+    title: `The Self`,
+    author: `Michael Priotkowsky`,
+    pages: '276',
+    status: false
+},
+{
+    title: `Ocelots and Zealots`,
+    author: `Jane K. Tiberius`,
+    pages: '277',
+    status: false
+},
+{
+    title: `Don't grow up`,
+    author: `Kenan Abdul`,
+    pages: '311',
+    status: false
+}
 ];
 //Creates new book instance and pushes to library
 function addToLibrary() {
@@ -85,7 +91,7 @@ deleteAll.addEventListener('click', () => {
 });
 
 //Making the cards
-const cardFactory = (title, author, pages, index) => {
+const cardFactory = (title, author, pages, index, status) => {
     let card = document.createElement('div');
     card.classList.add('card');
     let cardTitle = document.createElement('div');
@@ -102,15 +108,17 @@ const cardFactory = (title, author, pages, index) => {
         let read = document.createElement('button');
         read.classList.add('read');
         read.textContent = 'Mark as read';
+        read.dataset.read = false;
         let buttonContainer = document.createElement('div');
         buttonContainer.classList.add('buttonContainer')
         buttonContainer.append(remove, read);
 
             read.addEventListener('click', () => {
-                card.classList.toggle('card');
-                card.classList.toggle('cardRead');
+                // card.classList.toggle('card');
+                // card.classList.toggle('cardRead');
+                getReadIndex(card.dataset.index);
                 if (card.className == 'cardRead') {
-                    read.textContent = `Mark as unread`
+                    read.textContent = `Mark as unread`;
                 } else read.textContent = `Mark as read`
             });
 
@@ -120,6 +128,7 @@ const cardFactory = (title, author, pages, index) => {
         cardAuthor.textContent = author;
         cardPages.textContent = pages + ` pages`;
         card.dataset.index = index;
+        // card.dataset.read = status
         card.append(cardTitle, cardAuthor, cardPages, buttonContainer);
         grid.append(card);
 }
@@ -151,6 +160,7 @@ function removeCard(e){
     resetDisplay();
     library = newLibrary
     libraryStack(newLibrary);
+    setReadIndex()
 }
 
 function removeAll(){
@@ -165,3 +175,28 @@ function resetDisplay(){
         grid.removeChild(grid.lastChild)
     }
 }
+
+function getReadIndex(input){
+    if (library[input].status == false){
+    library[input].status = true;
+    }else if (library[input].status != false){
+        library[input].status = false;
+    }
+
+    setReadIndex()
+}
+
+function setReadIndex(){
+    let cards = [...document.querySelectorAll('.card, .cardRead')]
+    console.log(cards)
+    for (let i = 0; i < library.length; i++){
+        if (library[i].status != false &&
+            cards[i].dataset.index == i) {
+            cards[i].className = 'cardRead';
+        } else if (library[i].status == false &&
+            cards[i].dataset.index == i) {
+                cards[i].className = 'card';
+            }
+    }
+}
+
