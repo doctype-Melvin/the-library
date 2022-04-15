@@ -24,9 +24,9 @@ html, body {
 }
 
 .header {
-display: flex;
-align-items: center;
-justify-content: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .header-logo {
@@ -35,19 +35,29 @@ justify-content: center;
 
 .header-text {
     font-size: 5em;
+    background-image: linear-gradient(90deg, var(--contrast-color1), var(--contrast-color2));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
 }
 
 .main {
     display: grid;
-    grid-template: 1fr 1fr 5fr / 1fr;
+    grid-template: 1fr 1fr 6fr / 1fr;
+
+}
+.buttons-controls{
+    display: flex;
+    justify-content: center;
+    width: max(400px, 25%);
+    margin-inline: auto;
+    margin-bottom: 15px;
 }
 
 .controls {
-    display: grid;
-    grid-template: 1fr /5fr 1fr 1fr 5fr;
-    margin-bottom: 0px;
+    display: flex;
     align-items: center;
-    margin-bottom: 15px;
+    width: 400px;
+    justify-content: space-around;
 }
 
 .controls > button {
@@ -57,7 +67,7 @@ justify-content: center;
     border-radius: 15px;
     border: none;
     font-size: 0.9rem;
-    margin-right: 10px;
+    margin-right: 0px;
 }
 
 .controls > button:hover {
@@ -73,23 +83,30 @@ justify-content: center;
 
 .information{
     background-color: #2b6aff;
-    height: fit-content;
+    width: 100%;
     padding: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .description {
-    font-size: 1.1em;
-    width: 60%;
-    margin-left: auto;
-    margin-right: auto;
+    font-size: 1.15em;
+    width: 70%;
+    text-align: center;
+    margin-inline: auto;
     color: #fff;
 }
 
 /*Display start*/
+.display {
+    width: max(90vw, 350px);
+    margin-inline: auto;
+}
 .grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(235px, 17%));
-    grid-template-rows: repeat(auto-fit, minmax(150px, 200px));
+    grid-template-columns: repeat(auto-fit, minmax(250px, 325px));
+    grid-template-rows: repeat(auto-fit, minmax(175px, 1fr));
     gap: 20px;
     padding: 20px;
     justify-content: center;
@@ -102,7 +119,6 @@ justify-content: center;
     border-radius: 15px;
     padding: 15px;
     overflow: auto;
-
 }
 .cardTitle{
     font-weight: 600;
@@ -148,9 +164,7 @@ justify-content: center;
 }
 /*Card end*/
 
-/*Toggle switch start*/
 
-/*Toggle switch end*/
 /*Display end*/
 
 /*Popup start*/
@@ -169,11 +183,11 @@ justify-content: center;
 }
 
 .form-container {
-    max-width: 300px;
+    max-width: 400px;
     padding: 20px;
     background-color: #fff;
     border-radius: 5px;
-    border: solid 2px var(--contrast-color1);
+    border: solid 3px var(--light-color);
 }
 
 .form-container input[type='text'],
@@ -183,6 +197,7 @@ justify-content: center;
     border: none;
     background:#a136ff25;
     border-radius: 5px;
+    margin-bottom: 10px;
 }
 
 .close {
@@ -192,4 +207,30 @@ justify-content: center;
     right: 10px;
 }
 
+#pop-add {
+    background-color: var(--contrast-color1);
+    color: #fff;
+    font-size: clamp(0.7rem, 1rem + 5px, 1.15rem);
+    border-radius: 5px;
+    border: none;
+    padding: max(5px, 5%);
+    cursor: pointer;
+}
+
+#pop-add:hover {
+    background-color: var(--positive-color);
+    color: var(--contrast-color1);
+    font-weight: 600;
+}
+#pop-add:active {
+    background-color: var(--main-color);
+    color: #fff;
+}
+
+.closeBtn {
+    background-color: transparent;
+    border: none;
+    font-size: clamp(0.75rem, 1rem + 5 px, 1.1rem);
+    cursor: pointer;
+}
 /*Popup end*/
