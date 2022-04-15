@@ -167,6 +167,19 @@ html, body {
 
 /*Display end*/
 
+/*Footer start*/
+.footer{
+    text-align: center;
+    background-color: var(--light-color);
+    color: var(--contrast-color1);
+    padding: 5px 0;
+    font-weight: 500;
+}
+.footer a {
+    text-decoration: none;
+}
+/*Footer end*/
+
 /*Popup start*/
 .popup-wrapper {
     position: relative;
