@@ -21,31 +21,31 @@ function Book(title, author, pages){
 
 //Storage for book input
 let library = [
-    {
-    title: `I think so`,
-    author: `Kelis Thompson`,
-    pages: '343'
-},
-{
-    title: `Never knew I could`,
-    author: `Sasha Jackobs`,
-    pages: '298'
-},
-{
-    title: `The Self`,
-    author: `Michael Priotkowsky`,
-    pages: '276'
-},
-{
-    title: `Ocelots and Zealots`,
-    author: `Jane K. Tiberius`,
-    pages: '277'
-},
-{
-    title: `Don't grow up`,
-    author: `Kenan Abdul`,
-    pages: '311'
-}
+//     {
+//     title: `I think so`,
+//     author: `Kelis Thompson`,
+//     pages: '343'
+// },
+// {
+//     title: `Never knew I could`,
+//     author: `Sasha Jackobs`,
+//     pages: '298'
+// },
+// {
+//     title: `The Self`,
+//     author: `Michael Priotkowsky`,
+//     pages: '276'
+// },
+// {
+//     title: `Ocelots and Zealots`,
+//     author: `Jane K. Tiberius`,
+//     pages: '277'
+// },
+// {
+//     title: `Don't grow up`,
+//     author: `Kenan Abdul`,
+//     pages: '311'
+// }
 ];
 //Creates new book instance and pushes to library
 function addToLibrary() {
