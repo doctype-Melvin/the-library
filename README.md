@@ -7,4 +7,4 @@ Users can delete single entries or the whole data array.
 
 CSS grid & flexbox, Vanilla JavaScript
 
-<a target="_blank" href="https://doctype-melvin.github.io/the-library/">Live</a>
+<a href="https://doctype-melvin.github.io/the-library/" target="_blank">Live</a>
