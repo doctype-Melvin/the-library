@@ -160,7 +160,7 @@ html, body {
     /*Card color change*/
 .cardRead{
     background-color: var(--positive-color);
-    color: var(--contrast-color1);
+    color: #fff;
 }
 /*Card end*/
 

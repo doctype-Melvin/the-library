@@ -13,12 +13,13 @@ let pages = document.getElementById('pages');
 
 
 //Book prototype
-function Book(title, author, pages, status){
+class Book{
+    constructor(title, author, pages, status){
     this.title = title,
     this.author = author,
     this.pages = pages,
     this.status = status
-}
+}}
 
 //Storage for book input
 let library = [
@@ -91,7 +92,8 @@ deleteAll.addEventListener('click', () => {
 });
 
 //Making the cards
-const cardFactory = (title, author, pages, index, status) => {
+class cardFactory {
+constructor (title, author, pages, index, status) {
     let card = document.createElement('div');
     card.classList.add('card');
     let cardTitle = document.createElement('div');
@@ -132,10 +134,10 @@ const cardFactory = (title, author, pages, index, status) => {
         card.append(cardTitle, cardAuthor, cardPages, buttonContainer);
         grid.append(card);
 }
-
+}
 function createCard(){
     for (let i = library.length-1; i < library.length; i++){
-        cardFactory(library[library.length-1].title, 
+        new cardFactory(library[library.length-1].title, 
                     library[library.length-1].author,
                     library[library.length-1].pages,
                     library.length-1)
@@ -145,7 +147,7 @@ function createCard(){
 function libraryStack(input){
     if (input != []) {
         for (let i = 0; i < input.length; i++){
-            cardFactory(input[i].title,
+            new cardFactory(input[i].title,
                 input[i].author,
                 input[i].pages,
                 i)
@@ -199,4 +201,3 @@ function setReadIndex(){
             }
     }
 }
-
