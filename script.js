@@ -69,7 +69,18 @@ popAdd.addEventListener('click', () => {
     closePopUp();
     createCard();
 });
-closeBtn.addEventListener('click', closePopUp);
+closeBtn.addEventListener('click', () => {
+    closePopUp();
+});
+
+document.querySelector('.cancel').addEventListener('click', () => {
+    closeModal()
+})
+
+document.querySelector('.confirm').addEventListener('click', () => {
+    removeAll();
+    closeModal()
+})
 
 //Display functions of popup window
 function openPopUp() {
@@ -80,6 +91,14 @@ function closePopUp() {
     document.getElementById('popup').style.display = 'none';
 }
 
+function openModal() {
+    document.getElementById('modal').style.display = 'block';
+}
+
+function closeModal() {
+    document.getElementById('modal').style.display = 'none';
+}
+
 //Clears form after book addition
 function clearForm(){
     title.value = '';
@@ -88,7 +107,8 @@ function clearForm(){
 }
 
 deleteAll.addEventListener('click', () => {
-    removeAll()
+    openModal()
+    // removeAll()
 });
 
 //Making the cards
