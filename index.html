@@ -44,12 +44,12 @@
                 <div class="close"><button class="closeBtn">x</button></div>
                 <form action="#" class="form-container">
                     <label for="title"><strong>Book Title</strong></label>
-                    <input type="text" id="title" maxlength="30">
+                    <input type="text" class="input" id="title" maxlength="30" required pattern="[A-Za-z]">
                     <label for="author"><strong>Author</strong></label>
-                    <input type="text" id="author"  maxlength="30">
+                    <input type="text" class="input" id="author"  maxlength="30" required pattern="[A-Za-z]">
                     <label for="pages"><strong>Page count</strong></label>
-                    <input type="tel" name="pages" id="pages" pattern="[0-9]+">
-                    <button type="button" id="pop-add">Add Book</button>
+                    <input type="tel" class="input" name="pages" id="pages" required pattern="\d+">
+                    <button id="pop-add">Add Book</button>
                 </form>
             </div>
         </div>

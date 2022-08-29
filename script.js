@@ -221,3 +221,19 @@ function setReadIndex(){
             }
     }
 }
+
+// Form Validation
+const inputFields = document.querySelectorAll('.input')
+
+inputFields.forEach(field => field.addEventListener('input', () => {
+    field.setCustomValidity('')
+    field.checkValidity()
+}))
+
+inputFields.forEach(field => field.addEventListener('invalid', () => {
+    if (field.value === '') {
+        field.setCustomValidity(`Please enter a ${field.type}`)
+    } else {
+        field.setCustomValidity(`I am expecting a ${field.type}`)
+    }
+}))
